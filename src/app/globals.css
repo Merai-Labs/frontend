@@ -414,6 +414,25 @@ body {
   text-align: center;
 }
 
+.success-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.follow-x-btn {
+  gap: 8px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.follow-x-icon {
+  width: 16px;
+  height: auto;
+  flex-shrink: 0;
+  fill: #ffffff;
+}
+
 .toast {
   position: fixed;
   bottom: 28px;
@@ -512,6 +531,90 @@ body {
   }
 }
 
+/* Construction Hero */
+.construction-hero {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1 1 auto;
+  transform: translateY(-5vh);
+  padding: 24px clamp(16px, 4vw, 32px) 64px;
+  margin: 0 auto;
+  max-width: 860px;
+  width: 100%;
+}
+
+.construction-title {
+  font-family: var(--font-instrument-serif), Georgia, 'Times New Roman', serif;
+  font-size: clamp(36px, 7vw, 80px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.004em;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: clamp(20px, 3vh, 32px);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
+}
+
+.construction-subtitle {
+  max-width: min(560px, 92vw);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-size: clamp(14px, 1.6vw, 17px);
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.015em;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: clamp(28px, 4vh, 40px);
+  opacity: 0.92;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.x-cta-btn {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  justify-content: center;
+  padding: 0 !important;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.x-cta-btn svg {
+  width: 22px;
+  height: auto;
+}
+
+.cta-join-btn {
+  gap: 12px;
+  padding: 14px 28px;
+}
+
+.cta-join-btn .btn-text {
+  font-size: clamp(16px, 1.6vw, 18px);
+}
+
+.cta-arrow {
+  flex-shrink: 0;
+  color: #ffffff;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-join-btn:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
 /* Fine-tuned Breakpoints for Small Screens */
 @media (max-width: 480px) {
   .navbar {
@@ -544,5 +647,9 @@ body {
   .submit-arrow-btn {
     width: 42px;
     height: 42px;
+  }
+  .construction-hero {
+    transform: none;
+    padding: 8px 16px 24px;
   }
 }

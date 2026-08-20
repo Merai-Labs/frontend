@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 
 interface NavbarProps {
   onJoinClick?: () => void;
+  joinHref?: string;
+  hideActions?: boolean;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onJoinClick, joinHref, hideActions }) => {
   return (
     <motion.header
       className="navbar"
@@ -32,34 +34,46 @@ export const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
         <span className="brand-text">Penumbra</span>
       </Link>
 
-      <nav className="nav-links-container" aria-label="Main Navigation">
-        <Link
-          href="https://x.com/penumbratrade"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-link"
-          aria-label="Penumbra on X (Twitter)"
-        >
-          <svg
-            className="nav-x-icon"
-            viewBox="0 0 300 271"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            aria-hidden="true"
+      {!hideActions && (
+        <nav className="nav-links-container" aria-label="Main Navigation">
+          <Link
+            href="https://x.com/penumbratrade"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link"
+            aria-label="Penumbra on X (Twitter)"
           >
-            <path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z" />
-          </svg>
-          <span className="sr-only">X (Twitter)</span>
-        </Link>
-        <button
-          type="button"
-          onClick={onJoinClick}
-          className="glass-waitlist-btn"
-          aria-label="Join Waitlist"
-        >
-          <span className="btn-text">Join Waitlist</span>
-        </button>
-      </nav>
+            <svg
+              className="nav-x-icon"
+              viewBox="0 0 300 271"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z" />
+            </svg>
+            <span className="sr-only">X (Twitter)</span>
+          </Link>
+          {joinHref ? (
+            <Link
+              href={joinHref}
+              className="glass-waitlist-btn"
+              aria-label="Join Waitlist"
+            >
+              <span className="btn-text">Join Waitlist</span>
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={onJoinClick}
+              className="glass-waitlist-btn"
+              aria-label="Join Waitlist"
+            >
+              <span className="btn-text">Join Waitlist</span>
+            </button>
+          )}
+        </nav>
+      )}
     </motion.header>
   );
 };

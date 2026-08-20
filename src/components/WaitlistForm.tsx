@@ -85,20 +85,33 @@ export const WaitlistForm: React.FC = () => {
   return (
     <div className="waitlist-form-container">
       {isSubmitted ? (
-        <div className="success-message" role="alert">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+        <div className="success-block">
+          <div className="success-message" role="alert">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>You&apos;re on the list! We&apos;ll be in touch soon.</span>
+          </div>
+          <a
+            href="https://x.com/penumbratrade"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-waitlist-btn follow-x-btn"
           >
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          <span>You&apos;re on the list! We&apos;ll be in touch soon.</span>
+            <span className="btn-text">Follow us on</span>
+            <svg className="follow-x-icon" viewBox="0 0 300 271" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+              <path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z" />
+            </svg>
+          </a>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="waitlist-form">

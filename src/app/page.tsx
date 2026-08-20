@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
-import { WaitlistForm } from "@/components/WaitlistForm";
 
 const heroVariants: Variants = {
   hidden: {},
@@ -22,50 +23,49 @@ const fadeUp: Variants = {
 };
 
 export default function Home() {
-  const formRef = useRef<HTMLDivElement>(null);
-
-  const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-    const input = document.querySelector<HTMLInputElement>(".email-input");
-    input?.focus();
-  };
-
   return (
     <main className="canvas-wrapper">
-      {/* Top Navigation */}
-      <Navbar onJoinClick={scrollToForm} />
+      <Navbar hideActions />
 
-      {/* Hero Section */}
-      <section className="hero-content" aria-labelledby="hero-title">
+      <section className="construction-hero" aria-labelledby="construction-title">
         <motion.div
           variants={heroVariants}
           initial="hidden"
           animate="visible"
-          style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}
+          style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
         >
-          <motion.h1 id="hero-title" className="hero-title" variants={fadeUp}>
-            Get Early
-            <br />
-            Access
+          <motion.h1 id="construction-title" className="construction-title" variants={fadeUp}>
+            Whoops! We&apos;re still under construction.
           </motion.h1>
 
-          <motion.p className="hero-subtitle" variants={fadeUp}>
-            Be among the first to access Penumbra&apos;s lightning-fast execution
-            with complete anonymity
+          <motion.p className="construction-subtitle" variants={fadeUp}>
+            Something exciting is on the way — join the waitlist to be first through the door.
           </motion.p>
 
-          {/* Waitlist Signup Pill & Social Proof */}
-          <motion.div
-            ref={formRef}
-            style={{ width: "100%" }}
-            variants={fadeUp}
-          >
-            <WaitlistForm />
+          <motion.div className="cta-row" variants={fadeUp}>
+            <Link
+              href="https://x.com/penumbratrade"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-waitlist-btn x-cta-btn"
+              aria-label="Penumbra on X (Twitter)"
+            >
+              <svg viewBox="0 0 300 271" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" aria-hidden="true">
+                <path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z" />
+              </svg>
+            </Link>
+            <Link
+              href="/waitlist"
+              className="glass-waitlist-btn cta-join-btn"
+              aria-label="Join Waitlist"
+            >
+              <span className="btn-text">Join Waitlist</span>
+              <ArrowRight className="cta-arrow" size={18} aria-hidden="true" />
+            </Link>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Ambient bottom flare aura matching Paper visual glow */}
       <div className="bottom-flare" aria-hidden="true" />
     </main>
   );
