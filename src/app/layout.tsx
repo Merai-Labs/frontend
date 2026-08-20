@@ -24,13 +24,32 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://penumbratrade.xyz";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Penumbra — Get Early Access",
   description: "Join the Penumbra waitlist today. Get exclusive early access to the next generation platform.",
   openGraph: {
-    title: "Penumbra — Get Early Access",
-    description: "Join the Penumbra waitlist today.",
+    title: "Penumbra — Private OTC Trading",
+    description: "Lightning-fast execution with complete anonymity. Join the waitlist for early access.",
     type: "website",
+    url: "/",
+    siteName: "Penumbra",
+    images: [
+      {
+        url: `${siteUrl}/penumbra-thumbnail.png`,
+        width: 2560,
+        height: 1664,
+        alt: "Penumbra",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Penumbra — Private OTC Trading",
+    description: "Lightning-fast execution with complete anonymity. Join the waitlist for early access.",
+    images: [`${siteUrl}/penumbra-thumbnail.png`],
   },
 };
 
